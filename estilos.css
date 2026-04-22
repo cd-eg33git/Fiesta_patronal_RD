@@ -1,0 +1,619 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap');
+
+:root {
+    --cream: #fff8ea;
+    --sand: #f4dba4;
+    --gold: #d9a92f;
+    --amber: #ff8a3d;
+    --wine: #5f1f20;
+    --forest: #17352d;
+    --night: #120d12;
+    --navy: #19233f;
+    --panel: rgba(255, 248, 234, 0.08);
+    --panel-strong: rgba(255, 248, 234, 0.14);
+    --border: rgba(255, 222, 173, 0.2);
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    --radius-lg: 28px;
+    --content-width: 1160px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(255, 173, 77, 0.25), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(255, 230, 120, 0.12), transparent 22%),
+        linear-gradient(180deg, #2a1117 0%, #160f14 35%, #120d12 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 85%);
+}
+
+.inicio-body.celebracion-dia-22 {
+    background:
+        radial-gradient(circle at top, rgba(255, 198, 78, 0.34), transparent 28%),
+        radial-gradient(circle at 15% 20%, rgba(255, 119, 119, 0.18), transparent 18%),
+        linear-gradient(180deg, #33121a 0%, #170d1c 42%, #120d12 100%);
+}
+
+.inicio-body.celebracion-dia-fuerte {
+    background:
+        radial-gradient(circle at top, rgba(255, 102, 126, 0.35), transparent 28%),
+        radial-gradient(circle at 80% 18%, rgba(255, 205, 84, 0.22), transparent 18%),
+        linear-gradient(180deg, #2d1025 0%, #161024 45%, #0f0c16 100%);
+}
+
+.inicio-body.cierre-feria {
+    background:
+        radial-gradient(circle at top, rgba(124, 199, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(255, 207, 117, 0.18), transparent 20%),
+        linear-gradient(180deg, #18223e 0%, #132034 38%, #101820 100%);
+}
+
+.site-header,
+.site-nav,
+main,
+.site-footer {
+    position: relative;
+    z-index: 2;
+}
+
+.site-header,
+.site-nav,
+.page-shell,
+.site-footer,
+.hero,
+.feature-grid {
+    width: min(calc(100% - 24px), var(--content-width));
+    margin-inline: auto;
+}
+
+.site-header {
+    padding: 22px 0 14px;
+}
+
+.brand-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    box-shadow: var(--shadow);
+    padding: 18px;
+    backdrop-filter: blur(14px);
+}
+
+.brand-logo {
+    width: clamp(82px, 18vw, 120px);
+    height: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+}
+
+.small-logo {
+    width: clamp(72px, 15vw, 96px);
+}
+
+.eyebrow {
+    margin: 0 0 6px;
+    color: var(--sand);
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.brand-copy h1,
+.hero-copy h2,
+.info-card h2,
+.contact-card h2,
+.info-card h3,
+.panel-top h3 {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    line-height: 1.05;
+}
+
+.brand-copy h1 {
+    font-size: clamp(1.8rem, 6vw, 3.6rem);
+}
+
+.brand-subtitle {
+    margin: 10px 0 0;
+    max-width: 720px;
+    color: rgba(255, 248, 234, 0.8);
+    font-size: clamp(0.96rem, 2.8vw, 1.08rem);
+}
+
+.site-nav {
+    position: sticky;
+    top: 10px;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.site-nav a {
+    text-align: center;
+    text-decoration: none;
+    color: var(--cream);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 14px 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    backdrop-filter: blur(14px);
+    transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a.is-active {
+    background: linear-gradient(135deg, rgba(255, 195, 86, 0.28), rgba(255, 138, 61, 0.24));
+    border-color: rgba(255, 218, 123, 0.45);
+    transform: translateY(-2px);
+}
+
+main {
+    padding: 18px 0 40px;
+}
+
+.hero {
+    display: grid;
+    gap: 18px;
+}
+
+.hero-inicio {
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+    align-items: stretch;
+}
+
+.hero-copy,
+.hero-panel,
+.info-card,
+.contact-card {
+    background: linear-gradient(160deg, var(--panel-strong), var(--panel));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+.hero-copy {
+    padding: clamp(24px, 5vw, 42px);
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 245, 215, 0.12);
+    border: 1px solid rgba(255, 215, 141, 0.24);
+    color: var(--sand);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.hero-copy h2 {
+    margin-top: 14px;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+.hero-copy p,
+.hero-panel p,
+.info-card p,
+.detail-list,
+.mini-agenda {
+    color: rgba(255, 248, 234, 0.86);
+    font-size: 1rem;
+}
+
+.countdown-card {
+    margin-top: 22px;
+    padding: 18px;
+    border-radius: 24px;
+    background: rgba(255, 252, 245, 0.08);
+    border: 1px solid rgba(255, 219, 145, 0.2);
+}
+
+.countdown-label {
+    margin: 0 0 14px;
+    color: var(--sand);
+    font-weight: 700;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.time-box {
+    padding: 16px 10px;
+    border-radius: 18px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.time-box span {
+    display: block;
+    font-size: clamp(1.6rem, 7vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+}
+
+.time-box small {
+    display: block;
+    margin-top: 8px;
+    color: rgba(255, 248, 234, 0.74);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 14px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    color: #261105;
+    background: linear-gradient(135deg, #ffd98c, #ffb347);
+    box-shadow: 0 16px 28px rgba(255, 179, 71, 0.24);
+}
+
+.btn-secondary {
+    color: var(--cream);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
+}
+
+.hero-panel {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.panel-kicker {
+    margin: 0 0 10px;
+    color: var(--sand);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+}
+
+.mini-agenda,
+.detail-list {
+    margin: 18px 0 0;
+    padding-left: 20px;
+}
+
+.mini-agenda li,
+.detail-list li {
+    margin-bottom: 10px;
+}
+
+.feature-grid,
+.contact-grid,
+.location-grid {
+    display: grid;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.feature-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.page-shell {
+    padding: 18px 0 42px;
+}
+
+.single-column {
+    display: grid;
+}
+
+.contact-intro {
+    margin-top: 18px;
+}
+
+.spotlight-card,
+.map-card,
+.address-card,
+.contact-card {
+    padding: clamp(22px, 4vw, 34px);
+}
+
+.location-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+}
+
+.contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--cream);
+    text-decoration: none;
+}
+
+.map-embed-wrap {
+    margin: 22px 0 18px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    min-height: 320px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.map-embed-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 320px;
+    border: 0;
+}
+
+.icon-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-badge svg {
+    width: 36px;
+    height: 36px;
+    fill: currentColor;
+}
+
+.facebook-icon {
+    background: linear-gradient(135deg, #2d6bff, #1842a0);
+    color: #fff;
+}
+
+.whatsapp-icon {
+    background: linear-gradient(135deg, #48de72, #109f4e);
+    color: #fff;
+}
+
+.site-footer {
+    padding: 0 0 28px;
+    text-align: center;
+    color: rgba(255, 248, 234, 0.72);
+    font-size: 0.92rem;
+}
+
+.efectos {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle,
+.balloon,
+.firework-burst {
+    position: absolute;
+    will-change: transform, opacity;
+}
+
+.particle {
+    width: 10px;
+    height: 16px;
+    border-radius: 4px;
+    opacity: 0.92;
+    animation: fall linear forwards;
+}
+
+.balloon {
+    width: 34px;
+    height: 44px;
+    border-radius: 50% 50% 48% 48%;
+    opacity: 0.9;
+    animation: floatUp linear forwards;
+    box-shadow: inset -6px -8px 0 rgba(255, 255, 255, 0.16);
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 42px;
+    width: 2px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.45);
+    transform: translateX(-50%);
+}
+
+.firework-burst {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+    box-shadow:
+        0 -60px 0 0 currentColor,
+        42px -42px 0 0 currentColor,
+        60px 0 0 0 currentColor,
+        42px 42px 0 0 currentColor,
+        0 60px 0 0 currentColor,
+        -42px 42px 0 0 currentColor,
+        -60px 0 0 0 currentColor,
+        -42px -42px 0 0 currentColor,
+        22px -54px 0 0 currentColor,
+        54px -22px 0 0 currentColor,
+        54px 22px 0 0 currentColor,
+        22px 54px 0 0 currentColor,
+        -22px 54px 0 0 currentColor,
+        -54px 22px 0 0 currentColor,
+        -54px -22px 0 0 currentColor,
+        -22px -54px 0 0 currentColor;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -10vh, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate3d(var(--drift, 0px), 110vh, 0) rotate(680deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate3d(0, 18vh, 0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.92;
+    }
+    100% {
+        transform: translate3d(var(--drift, 0px), -120vh, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+    12% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 980px) {
+    .hero-inicio,
+    .feature-grid,
+    .location-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-nav {
+        top: 8px;
+    }
+}
+
+@media (max-width: 720px) {
+    .site-header,
+    .site-nav,
+    .page-shell,
+    .site-footer,
+    .hero,
+    .feature-grid {
+        width: min(calc(100% - 18px), var(--content-width));
+    }
+
+    .brand-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .site-nav {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .spotlight-card,
+    .map-card,
+    .address-card,
+    .contact-card {
+        padding: 20px;
+    }
+
+    .countdown-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-card {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-nav a {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .icon-badge {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+    }
+
+    .icon-badge svg {
+        width: 30px;
+        height: 30px;
+    }
+}
