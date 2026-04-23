@@ -149,7 +149,7 @@ main,
     top: 10px;
     z-index: 4;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-top: 14px;
 }
@@ -383,6 +383,57 @@ main {
     text-decoration: none;
 }
 
+.raffle-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.raffle-card-real {
+    overflow: hidden;
+    padding: 0;
+}
+
+.raffle-image-wrap {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.raffle-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.raffle-content {
+    padding: 22px;
+}
+
+.raffle-price {
+    margin: 14px 0 0;
+    color: var(--sand);
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.raffle-details {
+    margin-top: 16px;
+}
+
+.raffle-contact-panel {
+    padding-bottom: 26px;
+}
+
+.raffle-contact-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+
 .map-embed-wrap {
     margin: 22px 0 18px;
     border-radius: 22px;
@@ -545,7 +596,9 @@ main {
     .hero-inicio,
     .feature-grid,
     .location-grid,
-    .contact-grid {
+    .contact-grid,
+    .raffle-list,
+    .raffle-contact-links {
         grid-template-columns: 1fr;
     }
 
