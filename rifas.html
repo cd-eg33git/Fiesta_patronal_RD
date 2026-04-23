@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
+    <div class="lightbox" id="raffle-lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Cerrar imagen">×</button>
+        <img src="" alt="" class="lightbox-image" id="lightbox-image">
+    </div>
+
     <header class="site-header compact-header">
         <div class="brand-wrap">
             <img src="LOGO_N.png" alt="Logo de la Parroquia San Juan Bautista" class="brand-logo small-logo">
@@ -61,9 +66,11 @@
 
         <section class="raffle-list">
             <article class="info-card raffle-card raffle-card-real">
-                <div class="raffle-image-wrap">
-                    <img src="Guajo.png" alt="Rifa de un guajolote" class="raffle-image">
-                </div>
+                <a href="Guajo.png" class="raffle-image-link" data-lightbox-image="Guajo.png" data-lightbox-alt="Rifa de un guajolote" aria-label="Abrir imagen completa de la rifa del guajolote">
+                    <div class="raffle-image-wrap raffle-image-wrap-thumb">
+                        <img src="Guajo.png" alt="Rifa de un guajolote" class="raffle-image raffle-image-thumb">
+                    </div>
+                </a>
                 <div class="raffle-content">
                     <span class="pill">Rifa 1</span>
                     <h3>Guajolote</h3>
@@ -77,9 +84,11 @@
             </article>
 
             <article class="info-card raffle-card raffle-card-real">
-                <div class="raffle-image-wrap">
-                    <img src="Pastel.png" alt="Rifa de un pastel de 1 kilogramo" class="raffle-image">
-                </div>
+                <a href="Pastel.png" class="raffle-image-link" data-lightbox-image="Pastel.png" data-lightbox-alt="Rifa de un pastel de 1 kilogramo" aria-label="Abrir imagen completa de la rifa del pastel">
+                    <div class="raffle-image-wrap raffle-image-wrap-thumb">
+                        <img src="Pastel.png" alt="Rifa de un pastel de 1 kilogramo" class="raffle-image raffle-image-thumb">
+                    </div>
+                </a>
                 <div class="raffle-content">
                     <span class="pill">Rifa 2</span>
                     <h3>Pastel de 1 kg</h3>
@@ -93,9 +102,11 @@
             </article>
 
             <article class="info-card raffle-card raffle-card-real">
-                <div class="raffle-image-wrap">
-                    <img src="Tv.png" alt="Rifa de una televisión de 43 pulgadas" class="raffle-image">
-                </div>
+                <a href="Tv.png" class="raffle-image-link" data-lightbox-image="Tv.png" data-lightbox-alt="Rifa de una televisión de 43 pulgadas" aria-label="Abrir imagen completa de la rifa de la televisión">
+                    <div class="raffle-image-wrap raffle-image-wrap-thumb">
+                        <img src="Tv.png" alt="Rifa de una televisión de 43 pulgadas" class="raffle-image raffle-image-thumb">
+                    </div>
+                </a>
                 <div class="raffle-content">
                     <span class="pill">Rifa 3</span>
                     <h3>TV de 43 pulgadas</h3>
@@ -149,5 +160,7 @@
     <footer class="site-footer">
         <p>© 2026 Parroquia San Juan Bautista - Rafael Delgado, Veracruz</p>
     </footer>
+
+    <script src="rifas.js"></script>
 </body>
 </html>

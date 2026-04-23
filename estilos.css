@@ -30,10 +30,20 @@ body {
     min-height: 100vh;
     color: var(--cream);
     font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
     background:
         radial-gradient(circle at top, rgba(255, 173, 77, 0.25), transparent 30%),
         radial-gradient(circle at 85% 15%, rgba(255, 230, 120, 0.12), transparent 22%),
         linear-gradient(180deg, #2a1117 0%, #160f14 35%, #120d12 100%);
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 body::before {
@@ -194,6 +204,7 @@ main {
 .hero-panel,
 .info-card,
 .contact-card {
+    min-width: 0;
     background: linear-gradient(160deg, var(--panel-strong), var(--panel));
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -395,10 +406,22 @@ main {
     padding: 0;
 }
 
+.raffle-image-link {
+    display: block;
+    text-decoration: none;
+}
+
 .raffle-image-wrap {
     aspect-ratio: 4 / 3;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.06);
+}
+
+.raffle-image-wrap-thumb {
+    aspect-ratio: auto;
+    margin: 16px 16px 0;
+    border-radius: 18px;
+    border: 1px solid var(--border);
 }
 
 .raffle-image {
@@ -406,6 +429,11 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.raffle-image-thumb {
+    height: auto;
+    object-fit: contain;
 }
 
 .raffle-content {
@@ -481,6 +509,45 @@ main {
     text-align: center;
     color: rgba(255, 248, 234, 0.72);
     font-size: 0.92rem;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(10, 8, 11, 0.88);
+    z-index: 20;
+}
+
+.lightbox.is-open {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: min(96vw, 980px);
+    max-height: 86vh;
+    width: auto;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
 }
 
 .efectos {
@@ -627,6 +694,10 @@ main {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .site-nav a:last-child {
+        grid-column: 1 / -1;
+    }
+
     .hero-copy,
     .hero-panel,
     .spotlight-card,
@@ -643,9 +714,35 @@ main {
     .contact-card {
         align-items: flex-start;
     }
+
+    .raffle-image-wrap {
+        aspect-ratio: auto;
+    }
+
+    .raffle-image {
+        height: auto;
+        object-fit: contain;
+    }
+
+    .raffle-content {
+        padding: 18px;
+    }
+
+    .raffle-image-wrap-thumb {
+        margin: 14px 14px 0;
+    }
 }
 
 @media (max-width: 480px) {
+    .site-header,
+    .site-nav,
+    .page-shell,
+    .site-footer,
+    .hero,
+    .feature-grid {
+        width: min(calc(100% - 12px), var(--content-width));
+    }
+
     .site-nav a {
         padding: 12px 8px;
         font-size: 0.9rem;
@@ -668,5 +765,30 @@ main {
     .icon-badge svg {
         width: 30px;
         height: 30px;
+    }
+
+    .brand-wrap {
+        border-radius: 24px;
+        padding: 14px;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .info-card,
+    .contact-card {
+        border-radius: 22px;
+    }
+
+    .raffle-list {
+        gap: 14px;
+    }
+
+    .lightbox {
+        padding: 12px;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
     }
 }
