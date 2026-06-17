@@ -1,10 +1,11 @@
 (function () {
-    const feriaStart = new Date(2026, 5, 22, 0, 0, 0);
-    const feriaEnd = new Date(2026, 5, 25, 23, 59, 59);
+    const mainDay = new Date(2026, 5, 24, 0, 0, 0);
     const day22Start = new Date(2026, 5, 22, 0, 0, 0);
     const day22End = new Date(2026, 5, 22, 23, 59, 59);
-    const strongDaysStart = new Date(2026, 5, 23, 0, 0, 0);
-    const strongDaysEnd = new Date(2026, 5, 24, 23, 59, 59);
+    const day23Start = new Date(2026, 5, 23, 0, 0, 0);
+    const day23End = new Date(2026, 5, 23, 23, 59, 59);
+    const day24Start = new Date(2026, 5, 24, 0, 0, 0);
+    const day24End = new Date(2026, 5, 24, 23, 59, 59);
     const closeDayStart = new Date(2026, 5, 25, 0, 0, 0);
     const closeDayEnd = new Date(2026, 5, 25, 23, 59, 59);
     const afterFair = new Date(2026, 5, 26, 0, 0, 0);
@@ -20,8 +21,7 @@
         return;
     }
 
-    const now = new Date();
-    let timer;
+    let timer = null;
 
     function setCountdown(diff) {
         const totalSeconds = Math.max(0, Math.floor(diff / 1000));
@@ -37,12 +37,13 @@
     }
 
     function updateCountdown() {
-        const diff = feriaStart.getTime() - Date.now();
+        const diff = mainDay.getTime() - Date.now();
         if (diff <= 0) {
             countdownCard.querySelector('.countdown-label').textContent = 'La feria ya comenzó';
             setCountdown(0);
             if (timer) {
                 clearInterval(timer);
+                timer = null;
             }
             return;
         }
@@ -136,11 +137,11 @@
     }
 
     function paintState(state) {
-        if (state === 'before') {
+        if (state === 'pre') {
             title.textContent = 'La cuenta regresiva ya comenzó';
             text.textContent = 'Nos estamos preparando para vivir una feria llena de fe, tradición, música y convivencia familiar.';
-            panelTitle.textContent = 'Preparativos en marcha';
-            panelText.textContent = 'El 22 de junio de 2026 inicia oficialmente la feria. Guarda la fecha y comparte la invitación.';
+            panelTitle.textContent = 'Preparativos listos para vivir esta celebración de nuestro santo patrono San Juan Bautista';
+            panelText.textContent = 'El 24 de junio de 2026 es el día principal de la feria. Guarda la fecha y comparte la invitación.';
             updateCountdown();
             timer = window.setInterval(updateCountdown, 1000);
             return;
@@ -149,22 +150,22 @@
         countdownCard.querySelector('.countdown-label').textContent = 'Estado de la feria';
         setCountdown(0);
 
-        if (state === 'day22') {
+        if (state === 'warm') {
             document.body.classList.add('celebracion-dia-22');
-            title.textContent = 'Hoy inicia la feria';
-            text.textContent = 'Bienvenidos al arranque de la Feria de Rafael Delgado 2026. Que se viva con alegría, tradición y mucha participación.';
-            panelTitle.textContent = 'Inicio oficial';
-            panelText.textContent = 'Al entrar a la página se activa una celebración especial con confeti, globos y fuegos artificiales.';
-            startCelebration({ confetti: true, balloons: true, fireworks: true, duration: 7000 });
+            title.textContent = 'La feria ya está en marcha';
+            text.textContent = 'Los días previos al 24 de junio se viven con alegría, tradición y mucha participación.';
+            panelTitle.textContent = 'Ambiente festivo';
+            panelText.textContent = 'La antesala de la fiesta mantiene el ánimo alto rumbo al día fundamental.';
+            startCelebration({ confetti: true, balloons: true, duration: 6500 });
             return;
         }
 
-        if (state === 'strong') {
+        if (state === 'main') {
             document.body.classList.add('celebracion-dia-fuerte');
-            title.textContent = 'Estamos en el mero día de la feria';
-            text.textContent = 'Hoy 23 o 24 de junio de 2026 la celebración está en su punto más fuerte. Disfruta la fiesta y comparte este momento.';
-            panelTitle.textContent = 'Días grandes de celebración';
-            panelText.textContent = 'La entrada despliega un ambiente más intenso con fuegos, confeti y globos para resaltar los días más importantes.';
+            title.textContent = 'Hoy es el día principal';
+            text.textContent = '24 de junio de 2026, el corazón de la fiesta patronal. Hoy todo se centra en la celebración mayor.';
+            panelTitle.textContent = 'Día fundamental';
+            panelText.textContent = 'La entrada despliega el ambiente más intenso con fuegos, confeti y globos para resaltar el gran día.';
             startCelebration({ confetti: true, balloons: true, fireworks: true, duration: 9000, intense: true });
             return;
         }
@@ -186,16 +187,19 @@
         setFinishedMessage();
     }
 
+    const now = new Date();
     let state = 'after';
-    if (now < feriaStart) {
-        state = 'before';
+    if (now < day22Start) {
+        state = 'pre';
     } else if (now >= day22Start && now <= day22End) {
-        state = 'day22';
-    } else if (now >= strongDaysStart && now <= strongDaysEnd) {
-        state = 'strong';
+        state = 'warm';
+    } else if (now >= day23Start && now <= day23End) {
+        state = 'warm';
+    } else if (now >= day24Start && now <= day24End) {
+        state = 'main';
     } else if (now >= closeDayStart && now <= closeDayEnd) {
         state = 'close';
-    } else if (now >= afterFair || now > feriaEnd) {
+    } else if (now >= afterFair) {
         state = 'after';
     }
 
